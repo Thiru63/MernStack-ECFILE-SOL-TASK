@@ -112,7 +112,7 @@ const loginUser = asyncHandler(async (req, res) => {
       const OTP=otpgenerator.generate(6,{
         digits:true, lowerCaseAlphabets:false,upperCaseAlphabets:false,specialChars:false
       })
-      // await sendOtp(user.mobilenumber, OTP);
+      await sendOtp(user.mobilenumber, OTP);
       console.log(OTP)
 
 
