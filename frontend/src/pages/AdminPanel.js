@@ -18,7 +18,7 @@ const onclick= async (e)=>{
               Authorization: `Bearer ${user.token}`,
             },
           }
-        const res= await axios.get('http://localhost:5000/api/users/',config)
+        const res= await axios.get('https://ecfile-sol-task.onrender.com/api/users/',config)
         console.log(res)
         if(res.data) setdata(res.data)
         

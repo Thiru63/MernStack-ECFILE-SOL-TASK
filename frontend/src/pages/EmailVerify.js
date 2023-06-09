@@ -14,7 +14,7 @@ const EmailVerify = () => {
 	useEffect(() => {
 		const verifyEmailUrl = async () => {
 			try {
-				const url = `http://localhost:5000/api/users/${param.id}/verify/${param.token}`;
+				const url = `https://ecfile-sol-task.onrender.com/api/users/${param.id}/verify/${param.token}`;
 				const res  = await axios.get(url);
 				console.log(res);
 				if(res.data.message){ setValidUrl(res.data.message); }

@@ -49,7 +49,7 @@ function Login() {
   setotp('')
   setPop(false)
   try {
-    const res=await axios.post('http://localhost:5000/api/users/otpverify',data)
+    const res=await axios.post('https://ecfile-sol-task.onrender.com/api/users/otpverify',data)
    if(res.status===201) toast.success(res.data.message)
    else toast.error(res.data.message)
     

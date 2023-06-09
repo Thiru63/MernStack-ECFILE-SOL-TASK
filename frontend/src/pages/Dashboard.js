@@ -29,7 +29,7 @@ function Dashboard() {
           Authorization: `Bearer ${user.token}`,
         },
       }
-      const res= await axios.get('http://localhost:5000/api/users/user',config)
+      const res= await axios.get('https://ecfile-sol-task.onrender.com/api/users/user',config)
    if(res.data) setUSER(res.data)
    console.log(res)
    if(res.data)setPop(true)
