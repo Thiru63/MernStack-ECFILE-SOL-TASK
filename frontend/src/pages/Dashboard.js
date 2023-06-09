@@ -69,13 +69,13 @@ function Dashboard() {
   return (
     <>
     <div>
-      {popup?(<div style={{backgroundColor:'gray',height:'500px'}} className='popup'>
+      {popup?(<div style={{backgroundColor:'gray',height:'480px'}} className='popup'>
         <div className='popup-header'>
           <h2>My data</h2>
           <h1 onClick={e=>setPop(false)}>X</h1>
         </div>
        <img src={img} alt='' height='300px' width='300px'></img>
-       <a href={img} download><i title='download image' ><BsDownload/></i></a>
+       <a href={img} download><i style={{fontSize:'50px'}} title='download image' ><BsDownload/></i></a>
        
        <div>
         <h4>Name: {USER.name} </h4>

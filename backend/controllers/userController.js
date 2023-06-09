@@ -201,7 +201,7 @@ const getemailToken = asyncHandler(async (req, res) => {
 		});
 		if (!token) return res.status(400).send({ message: "Invalid link" });
 
-		await User.updateOne({ _id: user._id, emailverified: true });
+		await User.findByIdAndUpdate({ _id: user._id}, {emailverified: true });
 		await token.deleteOne();
 
 		res.status(201).send({ message: "Email verified successfully"});
@@ -217,6 +217,7 @@ const otpVerify = asyncHandler(async (req, res) => {
 	try {
 		const user = await User.findOne({ mobilenumber:req.body.number });
 		if (!user) return res.status(400).send({ message: "Invalid OTP" });
+
                         
 
 		const otp = await Otp.findOne({
@@ -224,9 +225,14 @@ const otpVerify = asyncHandler(async (req, res) => {
 					});
 		if (!otp) return res.status(400).send({ message: "Invalid OTP" });
     if (otp && (await bcrypt.compare(req.body.otp, otp.otp))) {
+      
+      
+      
 
-		await User.updateOne({ _id: user._id, mobileverified: true });
+		await User.findByIdAndUpdate({ _id: user._id}, {mobileverified: true });
 		await otp.deleteOne();
+
+    
 
 		res.status(201).send({ message: "Mobile OTP verified successfully You can login now"});
     }else{
