@@ -18,7 +18,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 
   if ( !name || !email || !mobilenumber || !req.file  ) {
-    console.log('a')
+    
     res.status(400)
     throw new Error('Please add all fields')
   }
@@ -221,14 +221,14 @@ const getemailToken = asyncHandler(async (req, res) => {
 const otpVerify = asyncHandler(async (req, res) => {
 	try {
 		const user = await User.findOne({ mobilenumber:req.body.number });
-		if (!user) return res.status(400).send({ message: "Invalid OTP" });
+		if (!user) return res.status(400).send({ message: "Wrong number " });
 
                         
 
 		const otp = await Otp.findOne({
 			userId: user._id,
 					});
-		if (!otp) return res.status(400).send({ message: "Invalid OTP" });
+		if (!otp) return res.status(400).send({ message: "Wrong number" });
     if (otp && (await bcrypt.compare(req.body.otp, otp.otp))) {
       
       
