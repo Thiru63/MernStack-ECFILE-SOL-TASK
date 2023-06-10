@@ -23,7 +23,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
   if(email.length>17  || email.length<17 ){
     res.status(400)
-    throw new Error('Email length should be 15 characters long')
+    throw new Error('Email length should be 17 characters long')
   }
   if(mobilenumber.toString().length>10 || mobilenumber.toString().length<10){
     res.status(400)
@@ -112,7 +112,7 @@ const loginUser = asyncHandler(async (req, res) => {
       const OTP=otpgenerator.generate(6,{
         digits:true, lowerCaseAlphabets:false,upperCaseAlphabets:false,specialChars:false
       })
-      await sendOtp(user.mobilenumber, OTP);
+      // await sendOtp(user.mobilenumber, OTP);
       console.log(OTP)
 
 
