@@ -65,6 +65,8 @@ function Register() {
   formData.append("mobilenumber",mobilenumber);
   formData.append("imagefile",imagefile)
 
+  if(imagefile) {
+
   const base64 = await convertToBase64(imagefile);
   console.log(base64)
   
@@ -83,6 +85,7 @@ function Register() {
  console.log(obj)
  
       dispatch(register(obj))
+} else toast.error('Please add all fields')
     
   }
 
