@@ -65,7 +65,7 @@ function Register() {
   formData.append("mobilenumber",mobilenumber);
   formData.append("imagefile",imagefile)
 
-  if(imagefile) {
+  if(name && email && mobilenumber && imagefile) {
 
   const base64 = await convertToBase64(imagefile);
   console.log(base64)
