@@ -55,7 +55,7 @@ function Register() {
 
   
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
 
     
@@ -65,13 +65,16 @@ function Register() {
   formData.append("mobilenumber",mobilenumber);
   formData.append("imagefile",imagefile)
 
+  const base64 = await convertToBase64(imagefile);
+  console.log(base64)
   
   
   const obj={
     name,
     email,
     mobilenumber,
-    imagefile
+    base64,
+    imagefile,
   }
       setname('')
       setemail('')
@@ -155,3 +158,16 @@ function Register() {
 }
 
 export default Register
+
+function convertToBase64(file){
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result)
+    };
+    fileReader.onerror = (error) => {
+      reject(error)
+    }
+  })
+}

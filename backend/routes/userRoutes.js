@@ -25,7 +25,7 @@ const isImage = (req,file,callback)=>{
         callback(null,true)
     }else{
         
-        callback(  new Error("only images is allowd"))
+        callback(  new Error("only images are allowd"))
     }
 }
 const upload = multer({

@@ -1,10 +1,14 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import UsersCard from '../components/UsersCard'
 import { toast } from 'react-toastify'
+import Login from './Login'
+import { useNavigate } from 'react-router-dom'
 
 const AdminPanel=()=>{
+
+    const navigate = useNavigate()
     const { user } = useSelector((state) => state.auth)
 
     const[data,setdata]=useState([])
@@ -27,6 +31,23 @@ const onclick= async (e)=>{
         toast.error(error.response.data.message)
     }
 }
+
+useEffect(() => {
+    
+
+    if (!user) {
+      navigate('/login')
+    }
+
+    
+
+     
+     
+  }, [user, navigate])
+
+if(!user) {
+    return <Login/>
+   }
 
     return(
         <>

@@ -14,10 +14,11 @@ const otpgenerator=require('otp-generator')
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, mobilenumber } = req.body
+  const { name, email, mobilenumber,base64 } = req.body
 
 
-  if (!name || !email || !mobilenumber || !req.file  ) {
+  if ( !name || !email || !mobilenumber || !req.file  ) {
+    console.log('a')
     res.status(400)
     throw new Error('Please add all fields')
   }
@@ -35,6 +36,10 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error('Mobile number  should be starts with 6 , 7 , 8 or 9')
   }
   
+  // if(!req.file.mimetype.startsWith("image")){
+  //   res.status(400)
+  //   throw new Error('Only images are allowed')
+  // }
 
 
   // Check if user exists
@@ -66,7 +71,7 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password:hashedpass,
     mobilenumber,
-    imagefile:req.file.filename,
+    imagefile:base64,
         
     
   })

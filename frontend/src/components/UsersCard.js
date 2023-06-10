@@ -2,14 +2,14 @@
 
 const UsersCard=({user})=>{
 
-    const imge=require(`../uploads/${user.imagefile}`)
+    const imge=require('../uploads/portfolio-2.jpg')
     const t='true'
     const f='false'
   
     return(
         <div style={{backgroundColor:'lightgray', marginBottom:'15px',width:'500px',marginTop:'10px',position:'relative',left:"200px"}}>
             <div>
-                <img src={imge} alt="" height='200px' width='200px'></img>
+                <img src={user.imagefile || imge} alt="" height='200px' width='200px'></img>
             </div>
             <div>
                 <h4>ID: {user._id}</h4>

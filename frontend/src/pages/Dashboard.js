@@ -64,7 +64,7 @@ function Dashboard() {
 
 
 
-  const img=require(`../uploads/${user.imagefile}`)
+  const img=require('../uploads/portfolio-2.jpg')
 
   return (
     <>
@@ -74,8 +74,8 @@ function Dashboard() {
           <h2>My data</h2>
           <h1 onClick={e=>setPop(false)}>X</h1>
         </div>
-       <img src={img} alt='' height='300px' width='300px'></img>
-       <a href={img} download><i style={{fontSize:'50px'}} title='download image' ><BsDownload/></i></a>
+       <img src={USER.imagefile ||  img } alt='' height='300px' width='300px'></img>
+       <a href={USER.imagefile || img} download><i style={{fontSize:'50px'}} title='download image' ><BsDownload/></i></a>
        
        <div>
         <h4>Name: {USER.name} </h4>
