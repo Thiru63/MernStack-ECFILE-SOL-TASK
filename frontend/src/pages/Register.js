@@ -42,7 +42,10 @@ function Register() {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message)
+      if(message && message.startsWith('Field value')){
+      console.log(message)
+      toast.error('Maximum imagefile size is 750kb')
+      }else toast.error(message)
     }
 
     if (isSuccess || user) {
@@ -68,7 +71,7 @@ function Register() {
   if(name && email && mobilenumber && imagefile) {
 
   const base64 = await convertToBase64(imagefile);
-  console.log(base64)
+  // console.log(base64)
   
   
   const obj={
@@ -82,7 +85,7 @@ function Register() {
       setemail('')
       setmobilenumber('')
       setimagefile('')
- console.log(obj)
+//  console.log(obj)
  
       dispatch(register(obj))
 } else toast.error('Please add all fields')
@@ -148,6 +151,7 @@ function Register() {
              
               onChange={setimgfile}
             />
+            <p style={{fontSize:'13px'}}>Upload a image file with maximum size of 750kb</p>
           </div>
           <div className='form-group'>
             <button type='submit' className='btn btn-block'>
